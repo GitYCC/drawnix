@@ -1,0 +1,38 @@
+{
+  "name": "drawnix-app",
+  "version": "0.0.2",
+  "description": "Drawnix Desktop App",
+  "main": "main.js",
+  "scripts": {
+    "start": "NODE_ENV=development electron .",
+    "start:prod": "electron .",
+    "build": "electron-builder",
+    "build:all": "node build-electron.js"
+  },
+  "devDependencies": {
+    "electron": "^39.1.1",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.drawnix.app",
+    "productName": "Drawnix",
+    "files": [
+      "main.js",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "../dist/apps/web",
+        "to": "web",
+        "filter": ["**/*"]
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": ["dmg", "zip"]
+    },
+    "directories": {
+      "output": "release"
+    }
+  }
+}
